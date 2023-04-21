@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Registration() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   function handlerChangeInput(event: React.FormEvent) {
     const target = event.target as HTMLInputElement;
     const value = target.value as string;
+
     switch (target.name) {
       case 'email':
         setEmail(value);
@@ -18,7 +20,6 @@ export default function Registration() {
       default:
         break;
     }
-    console.log(email, password);
   }
 
   function handlerRegister() {
@@ -33,7 +34,16 @@ export default function Registration() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestObj),
-    }).then((response) => response.json()).then((result) => console.log(result));
+    }).then((response) => {
+      if (response.ok) {
+        navigate('/');
+        setEmail('');
+        setPassword('');
+        alert('Вы успешно зарегистрировались!');
+      } else {
+        alert('Неверные данные!');
+      }
+    });
   }
 
   return (
@@ -41,8 +51,8 @@ export default function Registration() {
       <h1>Регистрация</h1>
       <input type="email" placeholder="Электронный адрес" name="email" onChange={handlerChangeInput} />
       <input type="password" placeholder="Пароль" name="password" onChange={handlerChangeInput} />
-      <button type="button" className="register" onClick={() => handlerRegister()}>Зарегистрироваться</button>
-      <Link to="/authorization">
+      <button type="button" className="register" onClick={handlerRegister}>Зарегистрироваться</button>
+      <Link to="/">
         <button type="button" className="authorization">Авторизация</button>
       </Link>
     </form>

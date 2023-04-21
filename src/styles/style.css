@@ -55,7 +55,7 @@ form.authorization button, form.registration button {
 form.authorization button:hover, form.registration button:hover {
   opacity: 80%;
 }
-form.authorization button.login, form.authorization button.register, form.registration button.login, form.registration button.register {
+form.authorization button.logIn, form.authorization button.register, form.registration button.logIn, form.registration button.register {
   background: #1877F2;
   width: 90%;
 }
