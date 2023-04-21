@@ -39,7 +39,6 @@ export default function Registration() {
         navigate('/');
         setEmail('');
         setPassword('');
-        alert('Вы успешно зарегистрировались!');
       } else {
         alert('Неверные данные!');
       }

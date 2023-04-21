@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function Authorization() {
+export default function Authorization({ changeIsLoggedIn } : { changeIsLoggedIn: () => void }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -35,10 +35,10 @@ export default function Authorization() {
       body: JSON.stringify(requestObj),
     }).then((response) => {
       if (response.ok) {
-        navigate('/');
         setEmail('');
         setPassword('');
-        alert('Вы успешно авторизовались!');
+        changeIsLoggedIn();
+        navigate('/colors');
       } else {
         alert('Неверные данные!');
       }
