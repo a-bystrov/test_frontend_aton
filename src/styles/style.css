@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "roboto";
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  background: #F0F2F5;
+}
+
+form.authorization, form.registration {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background: white;
+  align-items: center;
+}
+form.authorization > *, form.registration > * {
+  margin-bottom: 3%;
+}
+form.authorization h1, form.registration h1 {
+  color: #1877F2;
+}
+form.authorization input, form.registration input {
+  outline: none;
+  border: 2px solid #dddfe2;
+  border-radius: 5px;
+  width: 90%;
+  height: 5vh;
+  padding-left: 20px;
+  font-size: 0.8rem;
+}
+form.authorization input:focus, form.registration input:focus {
+  border-color: #1877F2;
+}
+form.authorization button, form.registration button {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 5vh;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+form.authorization button:hover, form.registration button:hover {
+  opacity: 80%;
+}
+form.authorization button.login, form.authorization button.register, form.registration button.login, form.registration button.register {
+  background: #1877F2;
+  width: 90%;
+}
+form.authorization a, form.registration a {
+  width: 100%;
+}
+form.authorization button.registration, form.authorization button.authorization, form.registration button.registration, form.registration button.authorization {
+  background: #42b72a;
+  width: 70%;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+}/*# sourceMappingURL=style.css.map */
