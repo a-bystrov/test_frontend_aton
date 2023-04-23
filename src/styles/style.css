@@ -11,6 +11,7 @@ html {
 
 body {
   background: #F0F2F5;
+  text-align: center;
 }
 
 form.authorization, form.registration {
@@ -67,32 +68,67 @@ form.authorization button.registration, form.authorization button.authorization,
   width: 70%;
 }
 
-table.colors {
-  margin: 1% auto;
+.colorsPage {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 0 auto;
 }
-table.colors caption {
+.colorsPage .arrowBack, .colorsPage .arrowForward {
+  font-size: 3rem;
+  color: white;
+  background-color: #42b72a;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.colorsPage .arrowBack:hover, .colorsPage .arrowForward:hover {
+  opacity: 80%;
+}
+.colorsPage table.colors caption {
   color: #05080c;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 3vh;
 }
-table.colors td, table.colors th {
-  border-radius: 5px;
-  padding: 2vh 5vw;
+.colorsPage table.colors tbody {
+  align-items: center;
 }
-table.colors td {
+.colorsPage table.colors td, .colorsPage table.colors th {
+  border-radius: 5px;
+  padding: 20px 40px;
+}
+.colorsPage table.colors td {
   background: #1877F2;
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
-table.colors th {
+.colorsPage table.colors th {
   background: white;
   color: #1877F2;
   border: 2px solid #1877F2;
 }
 
-@media screen and (max-width: 600px) {
+.loadingImg {
+  animation: loading 1s ease-in-out infinite;
+  margin-top: 10px;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 900px) {
   html {
-    font-size: 16px;
+    font-size: 14px;
+  }
+  .colorsPage table.colors td, .colorsPage table.colors th {
+    padding: 5px;
   }
 }/*# sourceMappingURL=style.css.map */

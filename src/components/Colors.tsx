@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import loadingImg from '../images/loading.png';
 
 interface IColor {
   id: number,
@@ -9,10 +10,12 @@ interface IColor {
 }
 
 export default function Colors() {
-  const [сolorsData, setColorsData] = useState([] as IColor[]);
+  const [colorsData, setColorsData] = useState([] as IColor[]);
+  const [countPages, setCountPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  async function getColorsData() {
-    const response = await fetch('https://reqres.in/api/{resource}?page=1&per_page=5', {
+  async function getColorsData(page: number) {
+    const response = await fetch(`https://reqres.in/api/{resource}?delay=2&page=${page}&per_page=4`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -20,36 +23,69 @@ export default function Colors() {
     });
     const result = await response.json();
     const colors = result.data;
-    setColorsData(colors);
+    setColorsData([...colorsData, ...colors]);
   }
 
   useEffect(() => {
-    getColorsData();
+    getColorsData(1);
   }, []);
 
+  function handlerNextPage() {
+    const pageCurrent = currentPage;
+    if (pageCurrent === 3) {
+      return;
+    }
+
+    setCurrentPage(currentPage + 1);
+    if (pageCurrent + 1 > countPages) {
+      const pagesCount = countPages;
+      setCountPages(pagesCount + 1);
+      getColorsData(pagesCount + 1);
+    }
+  }
+
+  function handlerPreviousPage() {
+    const curPage = currentPage;
+    if (curPage === 1) {
+      return;
+    }
+
+    setCurrentPage(curPage - 1);
+  }
+
   return (
-    <table className="colors">
-      <caption>COLORS</caption>
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>year</th>
-          <th>color</th>
-          <th>pantone_value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {сolorsData.map((color) => (
-          <tr key={color.id}>
-            <td>{color.id}</td>
-            <td>{color.name}</td>
-            <td>{color.year}</td>
-            <td>{color.color}</td>
-            <td>{color.pantone_value}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div>
+      <div className="colorsPage">
+        <button type="button" className="arrowBack" onClick={handlerPreviousPage}>{'<'}</button>
+        <table className="colors">
+          <caption>COLORS</caption>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>name</th>
+              <th>year</th>
+              <th>color</th>
+              <th>pantone_value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {colorsData.slice(currentPage * 4 - 4, currentPage * 4).length !== 0
+              && colorsData.slice(currentPage * 4 - 4, currentPage * 4).map((color) => (
+                (
+                  <tr key={color.id}>
+                    <td>{color.id}</td>
+                    <td>{color.name}</td>
+                    <td>{color.year}</td>
+                    <td>{color.color}</td>
+                    <td>{color.pantone_value}</td>
+                  </tr>
+                )))}
+          </tbody>
+        </table>
+        <button type="button" className="arrowForward" onClick={handlerNextPage}>{'>'}</button>
+      </div>
+      {colorsData.slice(currentPage * 4 - 4, currentPage * 4).length === 0
+        && <img src={loadingImg} alt="loading" className="loadingImg" />}
+    </div>
   );
 }
