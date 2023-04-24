@@ -54,7 +54,7 @@ export default function Colors() {
   }
 
   return (
-    <div>
+    <main>
       <div className="colorsPage">
         <button type="button" className="arrowBack" onClick={handlerPreviousPage}>{'<'}</button>
         <table className="colors">
@@ -86,6 +86,6 @@ export default function Colors() {
       </div>
       {colorsData.slice(currentPage * 4 - 4, currentPage * 4).length === 0
         && <img src={loadingImg} alt="loading" className="loadingImg" />}
-    </div>
+    </main>
   );
 }

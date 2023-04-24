@@ -37,7 +37,7 @@ form.authorization input, form.registration input {
   border: 2px solid #dddfe2;
   border-radius: 5px;
   width: 90%;
-  height: 5vh;
+  min-height: 40px;
   padding-left: 20px;
   font-size: 0.8rem;
 }
@@ -48,7 +48,7 @@ form.authorization button, form.registration button {
   color: white;
   font-size: 1rem;
   font-weight: bold;
-  height: 5vh;
+  min-height: 40px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -91,7 +91,11 @@ form.authorization button.registration, form.authorization button.authorization,
   color: #05080c;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 3vh;
+  margin-bottom: 10px;
+}
+.colorsPage table.colors thead {
+  position: sticky;
+  top: 0;
 }
 .colorsPage table.colors tbody {
   align-items: center;
@@ -114,6 +118,128 @@ form.authorization button.registration, form.authorization button.authorization,
 .loadingImg {
   animation: loading 1s ease-in-out infinite;
   margin-top: 10px;
+}
+
+.objectsPage {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.objectsPage .modalObj {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4117647059);
+}
+.objectsPage .modalObj .formObj {
+  position: relative;
+  background: #dddfe2;
+  width: 50%;
+  height: 50%;
+  margin: 20vh auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px 40px;
+}
+.objectsPage .modalObj .formObj .title, .objectsPage .modalObj .formObj .description {
+  background: white;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+.objectsPage .modalObj .formObj .title:focus, .objectsPage .modalObj .formObj .description:focus {
+  outline: 2px solid #1877F2;
+}
+.objectsPage .modalObj .formObj .title {
+  height: 10%;
+}
+.objectsPage .modalObj .formObj .description {
+  height: 50%;
+}
+.objectsPage .modalObj .formObj .createObjectBtn, .objectsPage .modalObj .formObj .editingObjectBtn {
+  width: 30%;
+  align-self: center;
+  cursor: pointer;
+  background: #42b72a;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  height: 10%;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.objectsPage .modalObj .formObj .createObjectBtn:hover, .objectsPage .modalObj .formObj .editingObjectBtn:hover {
+  opacity: 80%;
+}
+.objectsPage .modalObj .formObj .closeModalBtn {
+  position: absolute;
+  right: -30px;
+  top: -50px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+}
+.objectsPage .modalObj .formObj .closeModalBtn:hover {
+  color: #42b72a;
+}
+.objectsPage .openModalCreateObj, .objectsPage .object {
+  color: white;
+  border-radius: 10px;
+  height: 6vh;
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+.objectsPage .openModalCreateObj {
+  outline: none;
+  background: #42b72a;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.objectsPage .openModalCreateObj:hover {
+  opacity: 80%;
+}
+.objectsPage .object {
+  width: 100%;
+  border: 2px solid #1877F2;
+  background: #1877F2;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.objectsPage .object p {
+  color: white;
+  font-size: 1.5rem;
+}
+.objectsPage .object button {
+  background: none;
+  outline: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+.objectsPage .object img {
+  width: 100%;
+  cursor: pointer;
+}
+.objectsPage .object img:hover {
+  opacity: 80%;
 }
 
 @keyframes loading {
