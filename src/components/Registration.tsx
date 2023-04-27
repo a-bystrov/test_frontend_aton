@@ -4,8 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Registration({ setStatus }: { setStatus: (status: number) => void }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
 
+  // Обработчик для изменений в полях ввода данных, обновление состояний
   function handlerChangeInput(event: React.FormEvent) {
     const target = event.target as HTMLInputElement;
     const value = target.value as string;
@@ -22,6 +24,7 @@ export default function Registration({ setStatus }: { setStatus: (status: number
     }
   }
 
+  // Обработчик нажатия кнопки для регистрации, регистрация в случае успешного ответа на запрос
   function handlerRegister() {
     const requestObj = {
       email,

@@ -14,6 +14,7 @@ export default function Colors({ setStatus }: { setStatus: (status: number) => v
   const [countPages, setCountPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Получение данных с сервера
   async function getColorsData(page: number) {
     const response = await fetch(`https://reqres.in/api/{resource}?delay=2&page=${page}&per_page=4`, {
       method: 'GET',
@@ -31,6 +32,8 @@ export default function Colors({ setStatus }: { setStatus: (status: number) => v
     getColorsData(1);
   }, []);
 
+  // Обработчик нажатия кнопки для перехода к следующей странице таблицы,
+  // отправка запроса на сервер для получения дополнительных данных
   function handlerNextPage() {
     const pageCurrent = currentPage;
     if (pageCurrent === 3) {
@@ -45,6 +48,7 @@ export default function Colors({ setStatus }: { setStatus: (status: number) => v
     }
   }
 
+  // Обработчик нажатия кнопки для перехода к предыдущей странице таблицы
   function handlerPreviousPage() {
     const curPage = currentPage;
     if (curPage === 1) {

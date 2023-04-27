@@ -12,6 +12,7 @@ export default function Authorization({ changeIsLoggedIn, setStatus } : PropsAut
 
   const navigate = useNavigate();
 
+  // Обработчик для изменений в полях ввода данных, обновление состояний
   function handlerChangeInput(event: React.FormEvent) {
     const target = event.target as HTMLInputElement;
     const value = target.value as string;
@@ -27,6 +28,7 @@ export default function Authorization({ changeIsLoggedIn, setStatus } : PropsAut
     }
   }
 
+  // Обработчик нажатия кнопки для авторизации, вход в случае успешного ответа на запрос
   function handlerLogIn() {
     const requestObj = {
       email,

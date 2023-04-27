@@ -15,6 +15,7 @@ export default function Objects() {
   const [description, setDescription] = useState('');
   const [titleBeforeEditing, setTitleBeforeEditing] = useState('');
 
+  // Обработчик для изменений в полях ввода данных, обновление состояний
   function handlerChangeInput(event: React.FormEvent) {
     const target = event.target as HTMLInputElement;
     const value = target.value as string;
@@ -30,15 +31,18 @@ export default function Objects() {
     }
   }
 
+  // Открытие модального окна для создания нового объекта
   function handlerOpenModalCreateObj() {
     setModalCreateObj(true);
   }
 
+  // Очистка состояний в модальном окне
   function clearStateModal() {
     setTitle('');
     setDescription('');
   }
 
+  // Создание нового объекта
   function addObject() {
     const obj: IObject = {
       title,
@@ -63,11 +67,13 @@ export default function Objects() {
     setModalCreateObj(false);
   }
 
+  // Закрытие модального окна создания объекта
   function handlerCloseModalCreate() {
     clearStateModal();
     setModalCreateObj(false);
   }
 
+  // Открытие модального окна для редактирования объекта
   function handlerOpenModalEditing(event: React.MouseEvent) {
     const target = event.target as HTMLInputElement;
     const currentTitle = target.parentElement?.parentElement?.previousElementSibling?.textContent;
@@ -86,6 +92,7 @@ export default function Objects() {
     setModalEditingObj(true);
   }
 
+  // Сохранение изменений в объекте
   function saveEditingObject() {
     const currentObjects = objects;
     for (let i = 0; i < currentObjects.length; i += 1) {
@@ -100,11 +107,13 @@ export default function Objects() {
     setModalEditingObj(false);
   }
 
+  // Закрытие модального окна редактирования объекта
   function handlerCloseModalEditing() {
     clearStateModal();
     setModalEditingObj(false);
   }
 
+  // Удаление объекта
   function deleteObj(event: React.MouseEvent) {
     const target = event.target as HTMLInputElement;
     const currentTitle = target.parentElement?.parentElement?.previousElementSibling?.textContent;

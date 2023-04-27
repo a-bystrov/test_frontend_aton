@@ -11,6 +11,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [statusResponse, setStatusResponse] = useState(0);
 
+  // Сохранение статуса авторизации в сессионой переменной
   ReactSession.setStoreType('sessionStorage');
   const changeIsLoggedIn = () => {
     ReactSession.set('isLoggedIn', 'true');
@@ -23,6 +24,7 @@ export default function App() {
     }
   }, []);
 
+  // Изменение состояния статуса ответа на запросы
   const setStatusFromChild = (status: number) => {
     setStatusResponse(status);
     setTimeout(() => {
@@ -35,7 +37,6 @@ export default function App() {
       {statusResponse
         ? <Alert handlerClick={() => setStatusResponse(0)} status={statusResponse} />
         : <p />}
-
       <Routes>
         <Route path="/" element={<Authorization changeIsLoggedIn={changeIsLoggedIn} setStatus={setStatusFromChild} />} />
         <Route path="/registration" element={<Registration setStatus={setStatusFromChild} />} />
