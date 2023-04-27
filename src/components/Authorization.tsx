@@ -2,11 +2,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 interface PropsAuth {
-  changeIsLoggedIn: () => void,
+  logIn: () => void,
   setStatus: (status: number) => void
 }
 
-export default function Authorization({ changeIsLoggedIn, setStatus } : PropsAuth) {
+export default function Authorization({ logIn, setStatus } : PropsAuth) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -46,7 +46,7 @@ export default function Authorization({ changeIsLoggedIn, setStatus } : PropsAut
       if (response.ok) {
         setEmail('');
         setPassword('');
-        changeIsLoggedIn();
+        logIn();
         navigate('/colors');
       }
     });

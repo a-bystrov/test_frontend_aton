@@ -14,6 +14,51 @@ body {
     text-align: center;
 }
 
+header {
+    width: 100%;
+    border-bottom: 2px solid #ADADAD;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2vh;
+
+    * {
+        cursor: pointer;
+    }
+
+    .navigationItems {
+        display: flex;
+        
+        * {
+            text-decoration: none;
+            margin: 0 2vh;
+
+            &:visited {
+                color: #05080c;
+            }
+
+            &:hover {
+                color: #1877F2;
+            }
+        }
+    }
+
+    .logOut {
+        background: #1877F2;
+        color: white;
+        font-size: 1rem;
+        padding: 10px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+
+        &:hover {
+            opacity: 80%;
+        }
+    }
+}
+
 form.authorization, form.registration {
     display: flex;
     flex-direction: column;

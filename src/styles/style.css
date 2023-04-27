@@ -14,6 +14,44 @@ body {
   text-align: center;
 }
 
+header {
+  width: 100%;
+  border-bottom: 2px solid #ADADAD;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2vh;
+}
+header * {
+  cursor: pointer;
+}
+header .navigationItems {
+  display: flex;
+}
+header .navigationItems * {
+  text-decoration: none;
+  margin: 0 2vh;
+}
+header .navigationItems *:visited {
+  color: #05080c;
+}
+header .navigationItems *:hover {
+  color: #1877F2;
+}
+header .logOut {
+  background: #1877F2;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+header .logOut:hover {
+  opacity: 80%;
+}
+
 form.authorization, form.registration {
   display: flex;
   flex-direction: column;
