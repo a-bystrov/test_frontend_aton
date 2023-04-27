@@ -1,9 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function Authorization({ changeIsLoggedIn } : { changeIsLoggedIn: () => void }) {
+interface PropsAuth {
+  changeIsLoggedIn: () => void,
+  setStatus: (status: number) => void
+}
+
+export default function Authorization({ changeIsLoggedIn, setStatus } : PropsAuth) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
 
   function handlerChangeInput(event: React.FormEvent) {
@@ -34,13 +40,12 @@ export default function Authorization({ changeIsLoggedIn } : { changeIsLoggedIn:
       },
       body: JSON.stringify(requestObj),
     }).then((response) => {
+      setStatus(response.status);
       if (response.ok) {
         setEmail('');
         setPassword('');
         changeIsLoggedIn();
         navigate('/colors');
-      } else {
-        alert('Неверные данные!');
       }
     });
   }

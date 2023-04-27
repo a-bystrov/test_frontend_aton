@@ -281,6 +281,19 @@ form.authorization, form.registration {
     }
 }
 
+.alert {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    padding: 4px 10px;
+    height: 30px;
+    border-radius: 4px;
+    background: #1E1E1E;
+    color: rgb(230, 230, 230);
+    font-weight: lighter;
+    font-size: 0.8rem;
+}
+
 @keyframes loading {
         0% {transform: rotate(0deg);}
         100% {transform: rotate(360deg);}

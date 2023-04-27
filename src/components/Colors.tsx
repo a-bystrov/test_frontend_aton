@@ -9,7 +9,7 @@ interface IColor {
   pantone_value: string
 }
 
-export default function Colors() {
+export default function Colors({ setStatus }: { setStatus: (status: number) => void }) {
   const [colorsData, setColorsData] = useState([] as IColor[]);
   const [countPages, setCountPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,6 +23,7 @@ export default function Colors() {
     });
     const result = await response.json();
     const colors = result.data;
+    setStatus(response.status);
     setColorsData([...colorsData, ...colors]);
   }
 
@@ -58,7 +59,7 @@ export default function Colors() {
       <div className="colorsPage">
         <button type="button" className="arrowBack" onClick={handlerPreviousPage}>{'<'}</button>
         <table className="colors">
-          <caption>COLORS</caption>
+          <caption>ЦВЕТА</caption>
           <thead>
             <tr>
               <th>id</th>

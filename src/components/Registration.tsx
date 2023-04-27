@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function Registration() {
+export default function Registration({ setStatus }: { setStatus: (status: number) => void }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -35,12 +35,11 @@ export default function Registration() {
       },
       body: JSON.stringify(requestObj),
     }).then((response) => {
+      setStatus(response.status);
       if (response.ok) {
         navigate('/');
         setEmail('');
         setPassword('');
-      } else {
-        alert('Неверные данные!');
       }
     });
   }
