@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function Header({ logOut }: { logOut: () => void }) {
   const navigate = useNavigate();
 
+  // Выход из аккаунта и переход на страницу авторизации
   function logOutAndRedirect() {
     logOut();
     navigate('/');
